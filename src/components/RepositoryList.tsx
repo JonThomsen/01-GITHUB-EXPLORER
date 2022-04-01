@@ -2,11 +2,16 @@ import { useState, useEffect } from "react";
 import { RepositoryItem } from "./RepositoryItem";
 import '../styles/repositories.scss';
 
-//https://api.github.com/orgs/rocketseat/repos
+//não vai props no nome pois é ume state
+interface Repository{
+  name: string;
+  description: string;
+  html_url: string;
+}
 
 export function RepositoryList() {
   //estado com lista definir vetor vazio ([])
-  const [repositories, setRepositories] = useState([]);
+  const [repositories, setRepositories] = useState<Repository[]>([]);
 
   useEffect(() => {
     fetch('https://api.github.com/orgs/rocketseat/repos')
